@@ -1,0 +1,192 @@
+{
+
+	"name" : "ᴠᴏʟʟᴇʏʙᴀʟʟ  🏐",
+
+	"width" : 420,
+
+	"height" : 200,
+
+	"cameraFollow" : "ball",
+
+	"spawnDistance" : 299,
+
+
+	"redSpawnPoints" : [
+		[ -350, 77
+		],
+		[ -167, 77
+		]
+
+	],
+
+	"blueSpawnPoints" : [
+		[ 350, 77
+		],
+		[ 167, 77
+		]
+
+	],
+
+
+	"bg" : { "type" : "grass", "width" : 0, "height" : 0, "kickOffRadius" : 0, "cornerRadius" : 0, "color" : "1dc5d0" },
+
+	"vertexes" : [
+		/* 0 */ { "x" : -5, "y" : 20, "trait" : "net" },
+		/* 1 */ { "x" : 5, "y" : 20, "trait" : "net" },
+		/* 2 */ { "x" : -3, "y" : 120, "trait" : "net" },
+		
+		/* 3 */ { "x" : 100, "y" : 200, "trait" : "kickOffBarrier" },
+		/* 4 */ { "x" : 100, "y" : -200, "trait" : "kickOffBarrier" },
+		/* 5 */ { "x" : -100, "y" : 200, "trait" : "kickOffBarrier" },
+		/* 6 */ { "x" : -100, "y" : -200, "trait" : "kickOffBarrier" },
+		
+		/* 7 */ { "x" : -385, "y" : 100, "trait" : "line" },
+		/* 8 */ { "x" : -400, "y" : 125, "trait" : "line" },
+		/* 9 */ { "x" : 400, "y" : 125, "trait" : "line" },
+		/* 10 */ { "x" : 385, "y" : 100, "trait" : "line" },
+		/* 11 */ { "x" : -70, "y" : -50, "trait" : "line" },
+		/* 12 */ { "x" : 70, "y" : -50, "trait" : "line" },
+		
+		/* 13 */ { "x" : 3, "y" : 120, "trait" : "net" },
+		
+		/* 14 */ { "x" : -385, "y" : 103, "trait" : "line", "color" : "fdb279" },
+		/* 15 */ { "x" : 385, "y" : 103, "trait" : "line", "color" : "fdb279" },
+		/* 16 */ { "x" : -387, "y" : 106, "trait" : "line", "color" : "fdb279" },
+		/* 17 */ { "x" : 387, "y" : 106, "trait" : "line", "color" : "fdb279" },
+		/* 18 */ { "x" : -388, "y" : 109, "trait" : "line", "color" : "fdb279" },
+		/* 19 */ { "x" : 388, "y" : 109, "trait" : "line", "color" : "fdb279" },
+		/* 20 */ { "x" : -391, "y" : 112, "trait" : "line", "color" : "fdb279" },
+		/* 21 */ { "x" : 391, "y" : 112, "trait" : "line", "color" : "fdb279" },
+		/* 22 */ { "x" : -394, "y" : 115, "trait" : "line", "color" : "fdb279" },
+		/* 23 */ { "x" : 394, "y" : 115, "trait" : "line", "color" : "fdb279" },
+		/* 24 */ { "x" : -396, "y" : 118, "trait" : "line", "color" : "fdb279" },
+		/* 25 */ { "x" : 396, "y" : 118, "trait" : "line", "color" : "fdb279" },
+		/* 26 */ { "x" : -396, "y" : 121, "trait" : "line", "color" : "fdb279" },
+		/* 27 */ { "x" : 396, "y" : 121, "trait" : "line", "color" : "fdb279" },
+		/* 28 */ { "x" : -396, "y" : 122, "trait" : "line", "color" : "fdb279" },
+		/* 29 */ { "x" : 396, "y" : 122, "trait" : "line", "color" : "fdb279" },
+		
+		/* 30 */ { "x" : 3, "y" : 20, "trait" : "net" },
+		/* 31 */ { "x" : 0, "y" : 23, "trait" : "net", "color" : "FFFFFF" },
+		
+		/* 32 */ { "trait" : "line", "x" : 100, "y" : 101 },
+		/* 33 */ { "trait" : "line", "x" : 106, "y" : 124 },
+		/* 34 */ { "trait" : "line", "x" : -100, "y" : 101 },
+		/* 35 */ { "trait" : "line", "x" : -106, "y" : 124 },
+		
+		/* 36 */ { "x" : -3, "y" : 20, "trait" : "net" }
+
+	],
+
+	"segments" : [
+		{ "v0" : 0, "v1" : 1, "trait" : "net" },
+		
+		{ "v0" : 3, "v1" : 4, "trait" : "kickOffBarrier", "cGroup" : ["redKO" ] },
+		{ "v0" : 5, "v1" : 6, "trait" : "kickOffBarrier", "cGroup" : ["blueKO" ] },
+		{ "v0" : 0, "v1" : 11, "trait" : "kickOffBarrier", "cGroup" : ["redKO" ] },
+		{ "v0" : 1, "v1" : 12, "trait" : "kickOffBarrier", "cGroup" : ["blueKO" ] },
+		
+		{ "v0" : 8, "v1" : 9, "trait" : "line" },
+		{ "v0" : 10, "v1" : 7, "trait" : "line" },
+		{ "v0" : 15, "v1" : 14, "trait" : "line", "y" : 103, "color" : "fdb279" },
+		{ "v0" : 17, "v1" : 16, "trait" : "line", "y" : 106, "color" : "fdb279" },
+		{ "v0" : 19, "v1" : 18, "trait" : "line", "y" : 109, "color" : "fdb279" },
+		{ "v0" : 21, "v1" : 20, "trait" : "line", "y" : 112, "color" : "fdb279" },
+		{ "v0" : 23, "v1" : 22, "trait" : "line", "y" : 115, "color" : "fdb279" },
+		{ "v0" : 25, "v1" : 24, "trait" : "line", "y" : 118, "color" : "fdb279" },
+		{ "v0" : 27, "v1" : 26, "trait" : "line", "y" : 121, "color" : "fdb279" },
+		{ "v0" : 29, "v1" : 28, "trait" : "line", "y" : 122, "color" : "fdb279" },
+		{ "vis" : true, "color" : "FFFFFF", "trait" : "line", "v0" : 8, "v1" : 7 },
+		{ "vis" : true, "color" : "FFFFFF", "trait" : "line", "v0" : 10, "v1" : 9 },
+		{ "vis" : true, "color" : "FFFFFF", "trait" : "line", "v0" : 32, "v1" : 33 },
+		{ "vis" : true, "color" : "FFFFFF", "trait" : "line", "v0" : 34, "v1" : 35 }
+
+	],
+
+	"goals" : [
+		{ "p0" : [0,114 ], "p1" : [420,114 ], "team" : "blue" },
+		{ "p0" : [0,114 ], "p1" : [-420,114 ], "team" : "red" }
+
+	],
+
+
+	"discs" : [
+		{ "pos" : [0,75 ], "trait" : "net", "radius" : 4, "color" : "2575b2", "cMask" : ["ball","red","blue" ] },
+		{ "pos" : [0,85 ], "trait" : "net", "radius" : 4, "color" : "2575b2", "cMask" : ["ball","red","blue" ] },
+		{ "pos" : [0,95 ], "trait" : "net", "radius" : 4, "color" : "2575b2", "cMask" : ["ball","red","blue" ] },
+		{ "pos" : [0,105 ], "trait" : "net", "radius" : 4, "color" : "2575b2", "cMask" : ["ball","red","blue" ] },
+		{ "pos" : [0,115 ], "trait" : "net", "radius" : 4, "color" : "2575b2", "cMask" : ["ball","red","blue" ] },
+		
+		{ "pos" : [0,66 ], "radius" : 3, "color" : "ffffff", "cMask" : ["ball","red","blue" ], "invMass" : 0, "_selected" : true },
+		{ "pos" : [0,59 ], "radius" : 2, "color" : "404040", "cMask" : ["ball","red","blue" ], "_selected" : true },
+		{ "pos" : [0,55 ], "radius" : 2, "color" : "404040", "cMask" : ["ball","red","blue" ], "_selected" : true },
+		{ "pos" : [0,50 ], "radius" : 2, "color" : "404040", "cMask" : ["ball","red","blue" ], "_selected" : true },
+		{ "pos" : [0,45 ], "radius" : 2, "color" : "404040", "cMask" : ["ball","red","blue" ], "_selected" : true },
+		{ "pos" : [0,40 ], "radius" : 2, "color" : "404040", "cMask" : ["ball","red","blue" ], "_selected" : true },
+		{ "pos" : [0,36 ], "radius" : 2, "color" : "404040", "cMask" : ["ball","red","blue" ], "_selected" : true },
+		{ "pos" : [0,31 ], "radius" : 2, "color" : "404040", "cMask" : ["ball","red","blue" ], "_selected" : true },
+		{ "pos" : [0,25 ], "radius" : 3, "color" : "ffffff", "cMask" : ["ball","red","blue" ], "invMass" : 0, "_selected" : true },
+		{ "pos" : [0,-100000 ], "trait" : "ballPush" }
+
+	],
+
+	"planes" : [
+		{ "normal" : [0,-1 ], "dist" : -210, "cGroup" : ["ball" ], "bCoef" : 0 },
+		{ "normal" : [0,1 ], "dist" : -50, "cMask" : ["red" ], "bCoef" : -1 },
+		{ "normal" : [0,1 ], "dist" : -50, "cMask" : ["blue" ], "bCoef" : -1 },
+		{ "normal" : [0,-1 ], "dist" : -125, "cMask" : ["red","blue","ball" ], "bCoef" : 0 },
+		{ "normal" : [1,0 ], "dist" : 0, "cMask" : ["blue" ], "bCoef" : 0.1 },
+		{ "normal" : [-1,0 ], "dist" : 0, "cMask" : ["red" ], "bCoef" : 0.1 },
+		{ "normal" : [1,0 ], "dist" : -420, "cMask" : ["ball","red","blue" ], "bCoef" : 0.6 },
+		{ "normal" : [-1,0 ], "dist" : -420, "cMask" : ["ball","red","blue" ], "bCoef" : 0.6 },
+		{ "normal" : [0,1 ], "dist" : -199790, "cGroup" : ["ball" ], "bCoef" : 0 },
+		{ "normal" : [-1,0 ], "dist" : -100000, "cGroup" : ["ball" ], "bCoef" : 0 },
+		{ "normal" : [1,0 ], "dist" : -100000, "cGroup" : ["ball" ], "bCoef" : 0 }
+
+	],
+
+"joints" : [
+		{ "d0" : 6, "d1" : 7, "length" : 3, "strength" : 0.3, "color" : "EBEBEB"  },
+		{ "d0" : 7, "d1" : 8, "length" : 3, "strength" : 0.3, "color" : "EBEBEB"  },
+		{ "d0" : 8, "d1" : 9, "length" : 3, "strength" : 0.3, "color" : "EBEBEB"  },
+		{ "d0" : 9, "d1" : 10, "length" : 3, "strength" : 0.3, "color" : "EBEBEB"  },
+		{ "d0" : 10, "d1" : 11, "length" : 3, "strength" : 0.3, "color" : "EBEBEB"  },
+		{ "d0" : 11, "d1" : 12, "length" : 3, "strength" : 0.3, "color" : "EBEBEB"  },
+		{ "d0" : 12, "d1" : 13, "length" : 3, "strength" : 0.3, "color" : "EBEBEB"  },
+		{ "d0" : 13, "d1" : 14, "length" : 3, "strength" : 0.3, "color" : "EBEBEB"  }
+	],
+
+	"playerPhysics" : {
+		"bCoef" : 0.5,
+		"invMass" : 0.5,
+		"damping" : 0.85,
+		"acceleration" : 0.5,
+		"kickingAcceleration" : 0.07,
+		"kickingDamping" : 0.96,
+		"kickStrength" : 20
+
+	},
+
+	"ballPhysics" : {
+		"radius" : 10,
+		"bCoef" : 1,
+		"invMass" : 0.9,
+		"damping" : 0.98,
+		"color" : "fad804",
+		"cMask" : [ "wall"
+		],
+		"cGroup" : [ "ball"
+		]
+
+	},
+
+	"traits" : {
+		"net" : { "vis" : true, "bCoef" : 0, "invMass" : 0, "cMask" : ["ball" ] },
+		"line" : { "vis" : true, "cMask" : ["" ], "color" : "FFFFFF" },
+		"redline" : { "vis" : true, "cMask" : ["" ], "color" : "FF4A4A" },
+		"blueline" : { "vis" : true, "cMask" : ["" ], "color" : "6782FE" },
+		"kickOffBarrier" : { "vis" : false, "bCoef" : 0.1, "cGroup" : ["redKO","blueKO" ], "cMask" : ["red","blue" ] },
+		"ballPush" : { "radius" : 100000, "invMass" : 60, "cMask" : ["ball" ], "bCoef" : 0, "color" : "FFFFFFFF" }
+
+	}
+}
