@@ -1308,7 +1308,7 @@ function obtenerDiscos() {
 /*-------------------------------- STADIUMS ---------------------------------*/
 // Los mapas ahora viven en archivos .hbs dentro de una carpeta (ver CarpetaMapas).
 // Las funciones getXXXMap() se mantienen con el mismo nombre, así que todos los comandos (!rs, !futx3, etc.) funcionan igual.
-var CarpetaMapas = PRIV("CarpetaMapas","https://raw.githubusercontent.com/TU_USUARIO/TU_REPO/main/mapas/"); // URL de la carpeta con los .hbs (debe terminar en /). Para probar local: "http://localhost:8080/mapas/" con `npx http-server --cors`
+var CarpetaMapas = PRIV("CarpetaMapas","https://raw.githubusercontent.com/brandi3000/HaxballMapas/main/mapas/"); // URL de la carpeta con los .hbs (debe terminar en /). Para probar local: "http://localhost:8080/mapas/" con `npx http-server --cors`
 var _mapasNombres = ["RealSoccerMap4", "EntrenamientoFutsalMap", "Futx5cespedMap", "PremiosMap", "RealFutsal", "EntrenamientoRealSoccer", "BasquetMap", "MiniRSMap", "CampeonesMap", "BigMap", "Voley2DMap", "Voley3DMap", "Futx2Map", "Futx3Map", "Futx4Map", "EscuelaMap", "SkateMap", "HandballMap", "TenisCementoMap", "TenisPastoMap", "TenisLadrilloMap", "RealSoccerMap", "RealSoccerMap2", "RealSoccerMapOveja", "PenaltyRedMap", "Futx7Map", "2Man", "3Man", "4Man", "5Man", "6Man", "7Man", "8Man", "Futx5Map", "PenaltyBlueMap"];
 var _mapasCache = {};
 function _leerMapa(n){
