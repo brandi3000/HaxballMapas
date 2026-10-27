@@ -245,6 +245,8 @@ var MensajeHostAbierto =
 ## ⚽ ¡No te lo pierdas! Únete al partido ahora y demuestra tus habilidades en la cancha.
 ¡La diversión está por comenzar, no faltes! 🔥`;
 var TagHostAbierto = "@here"; //  Dejar "@here" o Colocar el "ID del Rol de Discord" al que quieres avisarle que creaste Host
+// Enviar el link de la sala a Discord automáticamente al abrirla. false = solo se envía cuando apretás el botón del panel.
+var EnviarLinkAlAbrir = false;
 
 // 🎥 Webhook para GRABACIONES y RESÚMENES de las Partidas jugadas. Reemplaza con tu propia URL de webhook.
 const WebhookGrabaciones = PRIV("WebhookGrabaciones");
@@ -1466,7 +1468,7 @@ function actualizarEstadoBot(){if(normalizarEstado(StatusBot)==="afk"){afkPlayer
 let linkAnterior=null;room.onRoomLink=function(url){if(url===linkAnterior)return;if(GrabarTodo){room.sendAnnouncement("🎥 Grabación iniciada automáticamente.",null,0x00FF00,"bold",2);room.startRecording();grabando=!0}
 if(automatizadoActivado){modoJueganAlgunos=!0;maxPlayersPerTeam=1;configuracionActual={mapa:getEntrenamientoFutsalMap(),scoreLimit:GolesEntrenamientoFutsal,timeLimit:TiempoEntrenamientoFutsal};room.stopGame();room.setCustomStadium(configuracionActual.mapa);room.setScoreLimit(configuracionActual.scoreLimit);room.setTimeLimit(configuracionActual.timeLimit);room.startGame()}
 linkAnterior=url;actualizarEstadoBot();cargarEstadisticas();roomLink=url;if(ReiniciarStats.toLowerCase()==="si"){totalPlayerGoals={};totalPlayerAssists={};totalPlayerPoints={};playerGoals={};playerAssists={};playerPoints={};playerGoals2={};playerAssists2={};playerPoints2={};playerFiguraCount={};playerMinutesPlayed={};playerGoalkeeperTime={};playerGoalsReceived={};playerCleanSheets={};localStorage.removeItem('totalPlayerGoals');localStorage.removeItem('totalPlayerAssists');localStorage.removeItem('totalPlayerPoints');localStorage.removeItem('playerGoals2');localStorage.removeItem('playerAssists2');localStorage.removeItem('playerPoints2');localStorage.removeItem('playerFiguraCount');localStorage.removeItem('playerMinutesPlayed');localStorage.removeItem('playerGoalkeeperTime');localStorage.removeItem('playerGoalsReceived');localStorage.removeItem('playerCleanSheets')}
-sendLinkToDiscord(mensajeLinkDiscord(roomLink))};function getDate(){let data=new Date(),dia=data.getDate().toString().padStart(2,'0'),mes=(data.getMonth()+1).toString().padStart(2,'0'),ano=data.getFullYear(),horas=data.getHours().toString().padStart(2,'0'),minutos=data.getMinutes().toString().padStart(2,'0');return `${dia}-${mes}-${ano}-${horas}h${minutos}m`}
+if(EnviarLinkAlAbrir){sendLinkToDiscord(mensajeLinkDiscord(roomLink))}};function getDate(){let data=new Date(),dia=data.getDate().toString().padStart(2,'0'),mes=(data.getMonth()+1).toString().padStart(2,'0'),ano=data.getFullYear(),horas=data.getHours().toString().padStart(2,'0'),minutos=data.getMinutes().toString().padStart(2,'0');return `${dia}-${mes}-${ano}-${horas}h${minutos}m`}
 function getScoresObjectTime(scores){return Math.floor(Math.floor(scores/60)/10).toString()+Math.floor(Math.floor(scores/60)%10).toString()+":"+Math.floor(Math.floor(scores-(Math.floor(scores/60)*60))/10).toString()+Math.floor(Math.floor(scores-(Math.floor(scores/60)*60))%10).toString()}
 let goalAnnouncementsSum=[];function getMapName(command){const mapNames={'!entrenamientofutsal':'⚽ Entrenamiento Futsal','!rs2':'⚽ Real Soccer 2','!rs':'⚽ Real Soccer','!rsoveja':'🐑 ⚽ Real Soccer 🐑 (Pelota Oveja)','!rsevo':'💫 ⚽ Real Soccer EVO 💫','!minirs':'⚽ Mini RS','!futx2':'⚽ Futsal x2','!futx3':'⚽ Futsal x3','!futx4':'⚽ Futsal x4','!futx5':'⚽ Futsal x5','!futx5cesped':'⚽ Futsal x5 🟢','!futx7':'⚽ Futsal x7','!realfutsal':'⚽ RealFutsal','!campeones':'🏆 CAMPEONES 🌿⭐🌿','!premios':'🌟 ɢᴀʟᴀ ᴅᴇ ᴘʀᴇᴍɪᴀᴄɪᴏɴᴇs 🎖️','!handball':'🤾 Handball','!tenisladrillo':'🎾 Tenis Ladrillo 🟠','!teniscemento':'🎾 Tenis Cemento 🔵','!tenispasto':'🎾 Tenis Pasto 🟢','!pensred':'🥅 Penales Team Red 🔴','!pensblue':'🥅 Penales Team Blue 🔵','!basket':'🏀 Basket','!big':'🏟️ Big','!voley2d':'🏐 Voley 2D','!voley3d':'🏐 Voley 3D','!escuela':'🏫 Escuela','!skate':'🛹 Skate','!2man':'👨‍💼👨‍💼 2 MAN','!3man':'👨‍💼👨‍💼👨‍💼 3 MAN','!4man':'👨‍💼👨‍💼👨‍💼👨‍💼 4 MAN','!5man':'👨‍💼👨‍💼👨‍💼👨‍💼👨‍💼 5 MAN','!6man':'👨‍💼👨‍💼👨‍💼👨‍💼👨‍💼👨‍💼 6 MAN','!7man':'👨‍💼👨‍💼👨‍💼👨‍💼👨‍💼👨‍💼👨‍💼 7 MAN','!8man':'👨‍💼👨‍💼👨‍💼👨‍💼👨‍💼👨‍💼👨‍💼👨‍💼8 MAN',};return mapNames[command]||'🕵️‍♂️ Mapa Desconocido'}
 function getPlayersStats(){const red=room.getPlayerList().filter((player)=>player.team==1);const blue=room.getPlayerList().filter((player)=>player.team==2);const printRed=red.map((player)=>{return player.name});const printBlue=blue.map((player)=>{return player.name});const timeRemaining=room.getScores().time;if(room.getScores()==null)return!1;let bluePoss=0;let redPoss=0;ballCarrying.forEach(updateTeamPoss);const redPossPercent=Math.round((redPoss/(redPoss+bluePoss+0.000001))*100);const bluePossPercent=Math.round((bluePoss/(redPoss+bluePoss+0.000001))*100);const totalPosesion=posesionEquipoA+posesionEquipoB;const porcentajeEquipoA=totalPosesion===0?0:(posesionEquipoA/totalPosesion)*100;const porcentajeEquipoB=totalPosesion===0?0:(posesionEquipoB/totalPosesion)*100;const timeOnRedHalf=Math.round((timeOnHalves[0]/(timeOnHalves[0]+timeOnHalves[1]+0.000001))*100);const timeOnBlueHalf=Math.round((timeOnHalves[1]/(timeOnHalves[0]+timeOnHalves[1]+0.000001))*100);const goalAnnouncementsSection=goalAnnouncementsSum.join('\n');const admins=room.getPlayerList().filter((player)=>player.admin);const adminNames=admins.map((admin)=>admin.name);const adminList=adminNames.length>0?adminNames.join(', '):'Sin Administrador';const figuraDelPartido2=getFiguraDelPartido2();return{printRed,printBlue,porcentajeEquipoA,porcentajeEquipoB,timeOnRedHalf,timeOnBlueHalf,adminList,figuraDelPartido2,timeRemaining,goalAnnouncementsSection}}
@@ -2223,6 +2225,7 @@ const allowedStadiums=["💪 Entrenamiento RS ⚽","💫⚽️ Real Soccer ᴱ�
     '#rsr-jug .pt{width:10px;height:10px;border-radius:50%;flex:0 0 10px}'+
     '#rsr-jug button{background:#262d36;border:1px solid #343c47;border-radius:5px;color:inherit;cursor:pointer;padding:2px 6px;font-size:12px}'+
     '#rsr-jug button:hover{background:#2e3742}#rsr-jug button.rsr-warn{background:#a33;border-color:#c55}'+
+    '#rsr-panel .sw{display:inline-block;width:28px;height:28px;border-radius:50%;border:2px solid #343c47;flex:0 0 28px;text-align:center;font:700 11px/24px system-ui}'+
     '#rsr-log{height:300px;overflow:auto;background:#0f1216;border:1px solid #2b313a;border-radius:6px;padding:6px;font:12px/1.4 ui-monospace,Consolas,monospace;word-break:break-word}'+
     '#rsr-log div{padding:1px 0}#rsr-log i{color:#6b7684;font-style:normal;margin-right:6px}';
     document.head.appendChild(el('style',{id:'rsr-style',text:css}));
@@ -2358,6 +2361,62 @@ const allowedStadiums=["💪 Entrenamiento RS ⚽","💫⚽️ Real Soccer ᴱ�
       el('div',{class:'nota',text:'Usa la misma lógica que los comandos del chat (!rs, !futx3, …).'})
     ]);
 
+    // ---------- pestaña EQUIPOS (camisetas por lado) ----------
+    // Usa la misma tabla (camisetasEquipos) y la misma función que cuando un admin escribe la clave en el chat (asignarCamisetaPorClave).
+    var alRefrescar=[];
+    function pintar(sw,codigo){
+      var t=String(codigo||'').split(' '),ang=parseInt(t[2],10),hex=/^[0-9a-f]{6}$/i;
+      var cols=t.slice(4).filter(function(c){return hex.test(c)}).map(function(c){return '#'+c});
+      if(!cols.length||isNaN(ang)||!hex.test(t[3]||'')){sw.style.background='#555';sw.textContent='';return}
+      var n=cols.length;
+      sw.style.background='linear-gradient('+(90+ang)+'deg,'+cols.map(function(c,i){return c+' '+(i*100/n)+'% '+((i+1)*100/n)+'%'}).join(',')+')';
+      sw.style.color='#'+t[3];sw.textContent='10';
+    }
+    function aplicarCamiseta(lado,clave){
+      if(!camisetasEquipos.hasOwnProperty(clave)){msg('Esa camiseta no existe en la tabla.','err');return false}
+      asignarCamisetaPorClave(clave);
+      if(lado==='red')camisetaRedActual=clave;else camisetaBlueActual=clave;
+      msg((lado==='red'?'Rojo: ':'Azul: ')+camisetasEquipos[clave].nombreEquipo,'ok');
+      log('👕 '+(lado==='red'?'Rojo':'Azul')+' → '+camisetasEquipos[clave].nombreEquipo+' ('+clave+') desde el panel');
+      return true;
+    }
+    function bloqueLado(lado){
+      var porEq={};
+      Object.keys(camisetasEquipos).forEach(function(k){
+        var p=k.split('/');if(p.length!==3||p[2]!==lado)return;
+        (porEq[p[0]]=porEq[p[0]]||{nombre:camisetasEquipos[k].nombreEquipo,vars:[]}).vars.push(p[1]);
+      });
+      var abrs=Object.keys(porEq).sort(function(a,b){return porEq[a].nombre.localeCompare(porEq[b].nombre)});
+      var selEq=el('select'),selVar=el('select'),sw=el('span',{class:'sw'});
+      abrs.forEach(function(a){selEq.appendChild(el('option',{value:a,text:porEq[a].nombre}))});
+      function llenarVar(){selVar.innerHTML='';((porEq[selEq.value]||{vars:[]}).vars).forEach(function(v){selVar.appendChild(el('option',{value:v,text:v.charAt(0).toUpperCase()+v.slice(1)}))})}
+      function clave(){return selEq.value+'/'+selVar.value+'/'+lado}
+      function ver(){var c=camisetasEquipos[clave()];pintar(sw,c&&c.codigo)}
+      selEq.addEventListener('change',function(){llenarVar();ver()});
+      selVar.addEventListener('change',ver);
+      var act=String(lado==='red'?camisetaRedActual:camisetaBlueActual).split('/');
+      if(porEq[act[0]]){selEq.value=act[0];llenarVar();selVar.value=act[1]}else llenarVar();
+      ver();
+      var actual=el('div',{class:'nota'});
+      alRefrescar.push(function(){actual.textContent='En la sala ahora: '+(lado==='red'?teamRed:teamBlue)});
+      var caja=el('div',null,[
+        el('h4',{text:lado==='red'?'🔴 Lado rojo':'🔵 Lado azul'}),
+        el('div',{class:'fila'},[selEq]),
+        el('div',{class:'fila'},[selVar,sw,el('button',{class:'b pri',text:'Aplicar',onclick:function(){aplicarCamiseta(lado,clave())}})]),
+        actual
+      ]);
+      return {caja:caja,abr:function(){return selEq.value},aplicar:function(){return aplicarCamiseta(lado,clave())}};
+    }
+    var ladoRojo=bloqueLado('red'),ladoAzul=bloqueLado('blue');
+    var avisoMismo=el('div',{class:'nota',style:'color:#ffb454'});
+    function revisarMismo(){avisoMismo.textContent=ladoRojo.abr()===ladoAzul.abr()?'⚠️ Elegiste el mismo equipo en los dos lados.':''}
+    alRefrescar.push(revisarMismo);
+    var tabEq=el('div',null,[
+      ladoRojo.caja,ladoAzul.caja,avisoMismo,
+      el('div',{class:'fila',style:'margin-top:8px'},[el('button',{class:'b pri',text:'Aplicar ambos lados',onclick:function(){ladoRojo.aplicar();ladoAzul.aplicar()}})]),
+      el('div',{class:'nota',text:'Equivale a escribir la clave en el chat (ej: bm/titular/red). Las camisetas salen de la tabla camisetasEquipos del script.'})
+    ]);
+
     // ---------- pestaña JUGADORES ----------
     var motivoIn=el('input',{type:'text',placeholder:'Motivo (opcional) para kick / ban',maxlength:'80'});
     var jugEl=el('div',{id:'rsr-jug'});
@@ -2394,7 +2453,7 @@ const allowedStadiums=["💪 Entrenamiento RS ⚽","💫⚽️ Real Soccer ᴱ�
     var estadoEl=el('span',{id:'rsr-estado'});
     var btnMin=el('button',{class:'b',text:estado.min?'▢':'—',title:'Minimizar / restaurar'});
     var head=el('div',{id:'rsr-head'},[el('b',{text:'⚽ '+(typeof NombreHost!=='undefined'?NombreHost:'Panel')}),estadoEl,btnMin]);
-    var TABS=[['sala','Sala',tabSala],['mapas','Mapas',tabMapas],['jugadores','Jugadores',tabJug],['registro','Registro',tabLog]];
+    var TABS=[['sala','Sala',tabSala],['mapas','Mapas',tabMapas],['equipos','Equipos',tabEq],['jugadores','Jugadores',tabJug],['registro','Registro',tabLog]];
     var tabsEl=el('div',{id:'rsr-tabs'});
     var body=el('div',{id:'rsr-body'});
     function mostrarTab(id){
@@ -2434,7 +2493,7 @@ const allowedStadiums=["💪 Entrenamiento RS ⚽","💫⚽️ Real Soccer ᴱ�
         btnDiscord.disabled=!l;btnCopiar.disabled=!l;
         btnIniciar.disabled=!!sc;btnDetener.disabled=!sc;btnPausa.disabled=!sc||pausado;btnReanudar.disabled=!sc||!pausado;
         mapaActual.textContent='Mapa actual: '+(typeof currentMap!=='undefined'?currentMap:'—');
-        if(estado.tab==='jugadores')dibujarJugadores(false);
+        alRefrescar.forEach(function(f){try{f()}catch(e){}});if(estado.tab==='jugadores')dibujarJugadores(false);
       }catch(e){}
     }
     refrescar();setInterval(refrescar,1000);
