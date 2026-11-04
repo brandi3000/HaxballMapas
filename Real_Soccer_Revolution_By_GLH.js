@@ -244,7 +244,7 @@ var MensajeHostAbierto =
 `# 🚀 ¡NUEVO HOST ABIERTO! 🎮
 ## ⚽ ¡No te lo pierdas! Únete al partido ahora y demuestra tus habilidades en la cancha.
 ¡La diversión está por comenzar, no faltes! 🔥`;
-var TagHostAbierto = "@here"; //  Dejar "@here" o Colocar el "ID del Rol de Discord" al que quieres avisarle que creaste Host
+var TagHostAbierto = "1567356833767751832"; //  Dejar "@here" o Colocar el "ID del Rol de Discord" al que quieres avisarle que creaste Host
 // Enviar el link de la sala a Discord automáticamente al abrirla. false = solo se envía cuando apretás el botón del panel.
 var EnviarLinkAlAbrir = false;
 
@@ -261,7 +261,7 @@ var WebhookParaLlamarAdmins = PRIV("WebhookParaLlamarAdmins");
 
 
 // 👮‍ Rol de Admin en Discord que se quiere llamar
-var RolAdminHost = "@here"; // Dejar '@here' o colocar el ID del rol de Discord que se quiere llamar
+var RolAdminHost = "1567356833767751832"; // Dejar '@here' o colocar el ID del rol de Discord que se quiere llamar
 var tiempoEsperaAdminsEnMinutos = 2;  // CANTIDAD DE MINUTOS A ESPERAR PARA REALIZAR UNA NUEVA LLAMADA A LOS ADMINS
 
 
